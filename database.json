@@ -1,0 +1,364 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iPhone 15 Pro",
+      "category": "Electronics",
+      "price": 134900,
+      "originalPrice": 149900,
+      "emoji": "📱",
+      "desc": "A17 Pro chip, titanium design, 48MP camera system. The most advanced iPhone ever.",
+      "rating": 4.8,
+      "reviews": 1240,
+      "stock": 44,
+      "badge": "New"
+    },
+    {
+      "id": 2,
+      "name": "Sony WH-1000XM5",
+      "category": "Electronics",
+      "price": 24990,
+      "originalPrice": 34990,
+      "emoji": "🎧",
+      "desc": "Industry-leading noise cancellation, 30hr battery, multipoint connection.",
+      "rating": 4.9,
+      "reviews": 876,
+      "stock": 23,
+      "badge": "Sale"
+    },
+    {
+      "id": 3,
+      "name": "MacBook Air M3",
+      "category": "Electronics",
+      "price": 114900,
+      "originalPrice": null,
+      "emoji": "💻",
+      "desc": "Supercharged by M3, up to 18-hour battery, all-day portable power.",
+      "rating": 4.9,
+      "reviews": 543,
+      "stock": 12,
+      "badge": "New"
+    },
+    {
+      "id": 4,
+      "name": "Nike Air Max 270",
+      "category": "Fashion",
+      "price": 9995,
+      "originalPrice": 12995,
+      "emoji": "👟",
+      "desc": "Lifestyle shoe with Max Air unit in the heel for all-day comfort.",
+      "rating": 4.5,
+      "reviews": 2301,
+      "stock": 67,
+      "badge": "Sale"
+    },
+    {
+      "id": 5,
+      "name": "Levi's 501 Jeans",
+      "category": "Fashion",
+      "price": 3999,
+      "originalPrice": 5999,
+      "emoji": "👖",
+      "desc": "The original straight fit jeans. 100% cotton denim, button fly.",
+      "rating": 4.3,
+      "reviews": 4521,
+      "stock": 134,
+      "badge": null
+    },
+    {
+      "id": 6,
+      "name": "Bosch Induction Cooktop",
+      "category": "Home",
+      "price": 8999,
+      "originalPrice": 12999,
+      "emoji": "🍳",
+      "desc": "4 induction zones, 7 power levels, safety auto switch-off.",
+      "rating": 4.6,
+      "reviews": 678,
+      "stock": 28,
+      "badge": "Sale"
+    },
+    {
+      "id": 7,
+      "name": "Dyson V12 Vacuum",
+      "category": "Home",
+      "price": 49900,
+      "originalPrice": 59900,
+      "emoji": "🌀",
+      "desc": "Laser Detect technology, HEPA filtration, 60-min battery life.",
+      "rating": 4.7,
+      "reviews": 432,
+      "stock": 9,
+      "badge": "Low Stock"
+    },
+    {
+      "id": 8,
+      "name": "Yoga Mat Pro",
+      "category": "Sports",
+      "price": 1999,
+      "originalPrice": 2999,
+      "emoji": "🧘",
+      "desc": "6mm thick, non-slip surface, extra-wide 72\" length, carry strap.",
+      "rating": 4.4,
+      "reviews": 1876,
+      "stock": 89,
+      "badge": null
+    },
+    {
+      "id": 9,
+      "name": "Atomic Habits",
+      "category": "Books",
+      "price": 499,
+      "originalPrice": 799,
+      "emoji": "📚",
+      "desc": "James Clear's #1 NYT bestseller on building good habits and breaking bad ones.",
+      "rating": 4.9,
+      "reviews": 12450,
+      "stock": 200,
+      "badge": "Bestseller"
+    },
+    {
+      "id": 10,
+      "name": "Maybelline Foundation",
+      "category": "Beauty",
+      "price": 699,
+      "originalPrice": 899,
+      "emoji": "💄",
+      "desc": "Fit Me Matte + Poreless, 40 shades, oil-free formula for a natural look.",
+      "rating": 4.2,
+      "reviews": 5632,
+      "stock": 156,
+      "badge": null
+    },
+    {
+      "id": 11,
+      "name": "Samsung 65\" QLED",
+      "category": "Electronics",
+      "price": 89990,
+      "originalPrice": 109990,
+      "emoji": "📺",
+      "desc": "4K QLED display, 120Hz refresh, Quantum HDR 1500, Tizen OS.",
+      "rating": 4.7,
+      "reviews": 234,
+      "stock": 7,
+      "badge": "Sale"
+    },
+    {
+      "id": 12,
+      "name": "Adidas Ultraboost",
+      "category": "Fashion",
+      "price": 14995,
+      "originalPrice": 17995,
+      "emoji": "👟",
+      "desc": "Boost midsole, Primeknit+ upper, Continental rubber outsole.",
+      "rating": 4.6,
+      "reviews": 892,
+      "stock": 44,
+      "badge": null
+    },
+    {
+      "id": 13,
+      "name": "The Alchemist",
+      "category": "Books",
+      "price": 349,
+      "originalPrice": 499,
+      "emoji": "📖",
+      "desc": "Paulo Coelho's magical story of Santiago, an Andalusian shepherd.",
+      "rating": 4.7,
+      "reviews": 8921,
+      "stock": 300,
+      "badge": null
+    },
+    {
+      "id": 14,
+      "name": "Protein Shaker",
+      "category": "Sports",
+      "price": 599,
+      "originalPrice": 799,
+      "emoji": "🧴",
+      "desc": "600ml BPA-free, leak-proof lid, mixing ball included.",
+      "rating": 4.1,
+      "reviews": 3421,
+      "stock": 210,
+      "badge": null
+    },
+    {
+      "id": 15,
+      "name": "Nykaa Face Serum",
+      "category": "Beauty",
+      "price": 849,
+      "originalPrice": 999,
+      "emoji": "✨",
+      "desc": "Vitamin C + Niacinamide brightening serum, 30ml, dermatologist tested.",
+      "rating": 4.5,
+      "reviews": 2341,
+      "stock": 92,
+      "badge": "New"
+    },
+    {
+      "id": 16,
+      "name": "Mi Smart Band 8",
+      "category": "Electronics",
+      "price": 2999,
+      "originalPrice": 3499,
+      "emoji": "⌚",
+      "desc": "1.62\" AMOLED, 190+ sports modes, 16-day battery, SpO2 monitor.",
+      "rating": 4.4,
+      "reviews": 6723,
+      "stock": 88,
+      "badge": null
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Arjun Kumar",
+      "email": "user@shop.com",
+      "password": "a9877b2e7534912462a6e5e5f0177bc6:17fa32b8ff4cfb2e5155a77f3cccc1a073d9c09b2b084086f4003945640fc88ab9fca3ff8f49c55ce359ce3633fa6a20eebc7607fe646772ed485b0ee5b4c57f",
+      "role": "user",
+      "orders": 4,
+      "joined": "Jan 2025",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "name": "Admin Sharma",
+      "email": "admin@shop.com",
+      "password": "dab58d6e7e7578af50c6b5c7745f4fc5:3a53e8a0f1c88cf294e740def57174c510c9583608306b36c24de531f8254c8e7517fde81d999549cf5702af8c9f3aba6bae2f926181a15da7cd1724898a2a38",
+      "role": "admin",
+      "orders": 0,
+      "joined": "Dec 2024",
+      "status": "Active"
+    },
+    {
+      "id": 3,
+      "name": "Priya Nair",
+      "email": "priya@example.com",
+      "password": "2c289717ddbc4c6a6323624dc1480256:c29efca3ae05ecb2c3cf975ac4c4767862190eb724833f8b6468f1fe777cbc946361ec1bb10b403a04b45dee12729fac1ffa61a5af9cbf65830c5c3a9535ef33",
+      "role": "user",
+      "orders": 7,
+      "joined": "Mar 2025",
+      "status": "Active"
+    },
+    {
+      "id": 4,
+      "name": "Rahul Verma",
+      "email": "rahul@example.com",
+      "password": "912a37b1a837a6c01c6124088952d96a:95a90a1eaec8330946f9b827bc2c02754e819f628a84005684194aa2a67444fcc9a7b2f55d2752e0b2e05b01b7c36f290f25e02c093fc411264ae242413776ec",
+      "role": "user",
+      "orders": 2,
+      "joined": "Apr 2025",
+      "status": "Inactive"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-001",
+      "userId": 1,
+      "customer": "Arjun Kumar",
+      "items": [
+        {
+          "productId": 1,
+          "qty": 1
+        },
+        {
+          "productId": 9,
+          "qty": 2
+        }
+      ],
+      "total": 135898,
+      "status": "Delivered",
+      "date": "15 May 2025",
+      "address": "123, MG Road, Chennai",
+      "paymentMethod": "Card"
+    },
+    {
+      "id": "ORD-002",
+      "userId": 3,
+      "customer": "Priya Nair",
+      "items": [
+        {
+          "productId": 4,
+          "qty": 1
+        },
+        {
+          "productId": 10,
+          "qty": 1
+        }
+      ],
+      "total": 10694,
+      "status": "Shipped",
+      "date": "18 Jun 2026",
+      "address": "45, Anna Nagar, Chennai",
+      "paymentMethod": "UPI"
+    },
+    {
+      "id": "ORD-003",
+      "userId": 1,
+      "customer": "Arjun Kumar",
+      "items": [
+        {
+          "productId": 8,
+          "qty": 2
+        }
+      ],
+      "total": 3998,
+      "status": "Processing",
+      "date": "19 Jun 2026",
+      "address": "123, MG Road, Chennai",
+      "paymentMethod": "COD"
+    },
+    {
+      "id": "ORD-004",
+      "userId": 4,
+      "customer": "Rahul Verma",
+      "items": [
+        {
+          "productId": 2,
+          "qty": 1
+        }
+      ],
+      "total": 24990,
+      "status": "Pending",
+      "date": "20 Jun 2026",
+      "address": "78, Bandra, Mumbai",
+      "paymentMethod": "Card"
+    },
+    {
+      "id": "ORD-005",
+      "userId": 3,
+      "customer": "Priya Nair",
+      "items": [
+        {
+          "productId": 6,
+          "qty": 1
+        },
+        {
+          "productId": 16,
+          "qty": 1
+        }
+      ],
+      "total": 11998,
+      "status": "Cancelled",
+      "date": "10 Jun 2026",
+      "address": "45, Anna Nagar, Chennai",
+      "paymentMethod": "UPI"
+    },
+    {
+      "id": "ORD-006",
+      "userId": 1,
+      "customer": "Arjun Kumar",
+      "items": [
+        {
+          "productId": 1,
+          "qty": 1
+        }
+      ],
+      "total": 159231,
+      "status": "Processing",
+      "date": "20 Jun 2026",
+      "address": "123 Test Street, Automated Verifier",
+      "paymentMethod": "UPI"
+    }
+  ]
+}

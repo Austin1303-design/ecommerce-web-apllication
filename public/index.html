@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopVault — Modern Commerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-brand" onclick="navigate('home')">
+      Shop<span>Vault</span>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center">
+      <button class="nav-btn" onclick="navigate('home')"><i class="ti ti-home"></i></button>
+      <button class="nav-btn" onclick="navigate('shop')"><i class="ti ti-shopping-bag"></i> Shop</button>
+      <button class="nav-btn" onclick="navigate('orders')" id="nav-orders" style="display:none"><i class="ti ti-package"></i> Orders</button>
+      <button class="nav-btn" onclick="navigate('wishlist')" id="nav-wishlist" style="display:none"><i class="ti ti-heart"></i></button>
+      <button class="nav-btn" onclick="navigate('cart')" id="nav-cart" style="display:none">
+        <i class="ti ti-shopping-cart"></i>
+        <span class="cart-badge" id="cart-count">0</span>
+      </button>
+      <button class="nav-btn" onclick="navigate('admin')" id="nav-admin" style="display:none"><i class="ti ti-layout-dashboard"></i> Admin</button>
+      <button class="nav-btn" onclick="navigate('profile')" id="nav-profile" style="display:none">
+        <i class="ti ti-user"></i>
+        <span id="nav-username"></span>
+        <span class="role-badge" id="nav-role"></span>
+      </button>
+      <button class="nav-btn accent" id="nav-login-btn" onclick="navigate('auth')"><i class="ti ti-login"></i> Login</button>
+      <button class="nav-btn" id="nav-logout-btn" onclick="logout()" style="display:none"><i class="ti ti-logout"></i></button>
+    </div>
+  </nav>
+
+  <!-- PAGES -->
+
+  <!-- HOME PAGE -->
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <h1>Shop Smarter,<br>Live <em>Better</em></h1>
+      <p>Discover curated products from top brands. Seamless shopping from browse to delivery.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="navigate('shop')"><i class="ti ti-arrow-right"></i> Browse Products</button>
+        <button class="btn btn-outline" onclick="navigate('auth')"><i class="ti ti-user-plus"></i> Create Account</button>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="stat-num">2,400+</div><div class="stat-label">Products</div></div>
+      <div class="stat-item"><div class="stat-num">18K+</div><div class="stat-label">Happy Customers</div></div>
+      <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">Avg. Rating</div></div>
+      <div class="stat-item"><div class="stat-num">Free</div><div class="stat-label">Shipping over ₹499</div></div>
+    </div>
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Featured Categories</div>
+          <div class="section-sub">Shop by what you love</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin-bottom:2.5rem">
+        <div onclick="filterCat('Electronics')" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border-radius:var(--radius-lg);padding:1.5rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem">📱</div>
+          <div style="font-weight:700;font-size:14px">Electronics</div>
+          <div style="font-size:12px;opacity:0.8">42 items</div>
+        </div>
+        <div onclick="filterCat('Fashion')" style="background:linear-gradient(135deg,#f093fb,#f5576c);color:white;border-radius:var(--radius-lg);padding:1.5rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem">👗</div>
+          <div style="font-weight:700;font-size:14px">Fashion</div>
+          <div style="font-size:12px;opacity:0.8">89 items</div>
+        </div>
+        <div onclick="filterCat('Home')" style="background:linear-gradient(135deg,#4facfe,#00f2fe);color:white;border-radius:var(--radius-lg);padding:1.5rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem">🏠</div>
+          <div style="font-weight:700;font-size:14px">Home & Living</div>
+          <div style="font-size:12px;opacity:0.8">67 items</div>
+        </div>
+        <div onclick="filterCat('Sports')" style="background:linear-gradient(135deg,#43e97b,#38f9d7);color:white;border-radius:var(--radius-lg);padding:1.5rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem">⚽</div>
+          <div style="font-weight:700;font-size:14px">Sports</div>
+          <div style="font-size:12px;opacity:0.8">38 items</div>
+        </div>
+        <div onclick="filterCat('Books')" style="background:linear-gradient(135deg,#fa709a,#fee140);color:white;border-radius:var(--radius-lg);padding:1.5rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem">📚</div>
+          <div style="font-weight:700;font-size:14px">Books</div>
+          <div style="font-size:12px;opacity:0.8">124 items</div>
+        </div>
+        <div onclick="filterCat('Beauty')" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb);color:white;border-radius:var(--radius-lg);padding:1.5rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem">💄</div>
+          <div style="font-weight:700;font-size:14px">Beauty</div>
+          <div style="font-size:12px;opacity:0.8">53 items</div>
+        </div>
+      </div>
+      <div class="section-header">
+        <div>
+          <div class="section-title">Trending Products</div>
+          <div class="section-sub">Most loved this week</div>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="navigate('shop')">View All <i class="ti ti-arrow-right"></i></button>
+      </div>
+      <div class="product-grid" id="home-featured"></div>
+    </div>
+  </div>
+
+  <!-- SHOP PAGE -->
+  <div class="page" id="page-shop">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-title">All Products</div>
+          <div class="section-sub" id="shop-count"></div>
+        </div>
+        <select class="form-input" style="width:auto;padding:8px 12px" onchange="sortProducts(this.value)">
+          <option value="default">Sort: Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="name">A - Z</option>
+        </select>
+      </div>
+      <div class="filters">
+        <div class="search-bar"><i class="ti ti-search"></i><input type="text" placeholder="Search products..." id="search-input" oninput="renderShop()"></div>
+        <button class="filter-chip active" onclick="setFilter('All',this)">All</button>
+        <button class="filter-chip" onclick="setFilter('Electronics',this)">📱 Electronics</button>
+        <button class="filter-chip" onclick="setFilter('Fashion',this)">👗 Fashion</button>
+        <button class="filter-chip" onclick="setFilter('Home',this)">🏠 Home</button>
+        <button class="filter-chip" onclick="setFilter('Sports',this)">⚽ Sports</button>
+        <button class="filter-chip" onclick="setFilter('Books',this)">📚 Books</button>
+        <button class="filter-chip" onclick="setFilter('Beauty',this)">💄 Beauty</button>
+      </div>
+      <div class="product-grid" id="shop-grid"></div>
+    </div>
+  </div>
+
+  <!-- CART PAGE -->
+  <div class="page" id="page-cart">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title"><i class="ti ti-shopping-cart"></i> Shopping Cart</div>
+      </div>
+      <div class="cart-layout">
+        <div id="cart-items-list"></div>
+        <div>
+          <div class="cart-summary">
+            <div class="summary-title">Order Summary</div>
+            <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
+            <div class="summary-row"><span>Discount</span><span id="cart-discount" style="color:var(--success)">-₹0</span></div>
+            <div class="summary-row"><span>Shipping</span><span id="cart-shipping">₹49</span></div>
+            <div class="summary-row"><span>Tax (18%)</span><span id="cart-tax">₹0</span></div>
+            <div class="coupon-row">
+              <input type="text" id="coupon-input" placeholder="Coupon code">
+              <button class="btn btn-secondary btn-sm" onclick="applyCoupon()">Apply</button>
+            </div>
+            <div class="summary-row total"><span>Total</span><span id="cart-total" style="color:var(--accent)">₹0</span></div>
+            <button class="btn btn-primary" style="width:100%;margin-top:1rem;justify-content:center" onclick="goCheckout()">
+              <i class="ti ti-credit-card"></i> Proceed to Checkout
+            </button>
+            <button class="btn btn-secondary" style="width:100%;margin-top:8px;justify-content:center" onclick="navigate('shop')">
+              <i class="ti ti-arrow-left"></i> Continue Shopping
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT PAGE -->
+  <div class="page" id="page-checkout">
+    <div class="container">
+      <div class="section-title" style="margin-bottom:1.5rem"><i class="ti ti-credit-card"></i> Checkout</div>
+      <div class="checkout-layout">
+        <div>
+          <div class="form-section">
+            <div class="form-section-title"><i class="ti ti-map-pin"></i> Delivery Address</div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="co-fname" placeholder="Arjun" value="Arjun"></div>
+              <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="co-lname" placeholder="Kumar" value="Kumar"></div>
+            </div>
+            <div class="form-row single">
+              <div class="form-group"><label class="form-label">Address</label><input class="form-input" id="co-addr" placeholder="123, MG Road, Nungambakkam" value="123, MG Road, Nungambakkam"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">City</label><input class="form-input" id="co-city" value="Chennai"></div>
+              <div class="form-group"><label class="form-label">Pincode</label><input class="form-input" id="co-pin" value="600034"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">State</label><input class="form-input" id="co-state" value="Tamil Nadu"></div>
+              <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="co-phone" value="+91 98765 43210"></div>
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="form-section-title"><i class="ti ti-credit-card"></i> Payment Method</div>
+            <div class="payment-options">
+              <div class="payment-opt selected" id="pay-card" onclick="selectPayment('card')">
+                <div class="payment-opt-icon">💳</div>
+                <div class="payment-opt-label">Card</div>
+              </div>
+              <div class="payment-opt" id="pay-upi" onclick="selectPayment('upi')">
+                <div class="payment-opt-icon">📲</div>
+                <div class="payment-opt-label">UPI</div>
+              </div>
+              <div class="payment-opt" id="pay-cod" onclick="selectPayment('cod')">
+                <div class="payment-opt-icon">💵</div>
+                <div class="payment-opt-label">Cash on Delivery</div>
+              </div>
+            </div>
+            <div id="pay-card-fields" style="margin-top:1rem">
+              <div class="form-row single"><div class="form-group"><label class="form-label">Card Number</label><input class="form-input" value="4242 4242 4242 4242"></div></div>
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Expiry</label><input class="form-input" value="12/27"></div>
+                <div class="form-group"><label class="form-label">CVV</label><input class="form-input" value="123"></div>
+              </div>
+            </div>
+            <div id="pay-upi-fields" style="display:none;margin-top:1rem">
+              <div class="form-row single"><div class="form-group"><label class="form-label">UPI ID</label><input class="form-input" placeholder="name@upi"></div></div>
+            </div>
+            <div id="pay-cod-fields" style="display:none;margin-top:1rem;background:var(--surface3);border-radius:var(--radius);padding:1rem;font-size:13px;color:var(--text2)">
+              Pay cash when your order arrives. Extra ₹25 COD charge applies.</div>
+          </div>
+        </div>
+        <div>
+          <div class="cart-summary">
+            <div class="summary-title">Order Review</div>
+            <div id="co-items"></div>
+            <div class="summary-row" style="margin-top:12px"><span>Subtotal</span><span id="co-subtotal">₹0</span></div>
+            <div class="summary-row"><span>Shipping</span><span>₹49</span></div>
+            <div class="summary-row"><span>Tax</span><span id="co-tax">₹0</span></div>
+            <div class="summary-row total"><span>Total</span><span id="co-total" style="color:var(--accent)">₹0</span></div>
+            <button class="btn btn-primary" style="width:100%;margin-top:1rem;justify-content:center;font-size:16px" onclick="placeOrder()">
+              <i class="ti ti-lock"></i> Place Order Securely
+            </button>
+            <div style="text-align:center;font-size:12px;color:var(--text3);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:4px">
+              <i class="ti ti-shield-check"></i> 256-bit SSL encryption
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER SUCCESS PAGE -->
+  <div class="page" id="page-success">
+    <div class="container">
+      <div class="order-success">
+        <div class="success-icon">🎉</div>
+        <h2 style="font-size:1.8rem;font-weight:700;margin-bottom:0.5rem">Order Placed!</h2>
+        <p style="color:var(--text2);margin-bottom:0.5rem">Your order <strong id="success-order-id"></strong> has been confirmed.</p>
+        <p style="color:var(--text2);margin-bottom:2rem;font-size:14px">Estimated delivery: <strong>3–5 business days</strong></p>
+        <div style="max-width:500px;margin:0 auto 2rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+          <div class="track-steps">
+            <div class="track-step"><div class="track-dot done"><i class="ti ti-check"></i></div><div class="track-label">Placed</div></div>
+            <div class="track-step"><div class="track-dot current"><i class="ti ti-package"></i></div><div class="track-label">Processing</div></div>
+            <div class="track-step"><div class="track-dot"><i class="ti ti-truck"></i></div><div class="track-label">Shipped</div></div>
+            <div class="track-step"><div class="track-dot"><i class="ti ti-home"></i></div><div class="track-label">Delivered</div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="navigate('orders')"><i class="ti ti-package"></i> Track Order</button>
+          <button class="btn btn-secondary" onclick="navigate('shop')"><i class="ti ti-shopping-bag"></i> Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDERS PAGE -->
+  <div class="page" id="page-orders">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title"><i class="ti ti-package"></i> My Orders</div>
+      </div>
+      <div id="orders-list"></div>
+    </div>
+  </div>
+
+  <!-- WISHLIST PAGE -->
+  <div class="page" id="page-wishlist">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title"><i class="ti ti-heart"></i> Wishlist</div>
+      </div>
+      <div id="wishlist-grid" class="wishlist-grid"></div>
+    </div>
+  </div>
+
+  <!-- AUTH PAGE -->
+  <div class="page" id="page-auth">
+    <div class="auth-wrap">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <div class="auth-logo-text">Shop<span>Vault</span></div>
+          <div style="font-size:13px;color:var(--text2);margin-top:4px">Your premium shopping destination</div>
+        </div>
+        <div class="auth-tabs">
+          <div class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Sign In</div>
+          <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</div>
+        </div>
+        <div class="social-login">
+          <button class="social-btn" onclick="socialLogin('Google')">🔵 Google</button>
+          <button class="social-btn" onclick="socialLogin('GitHub')">⚫ GitHub</button>
+        </div>
+        <div class="divider">or continue with email</div>
+        <div id="auth-form-login">
+          <div class="form-full"><label class="form-label">Email</label><input class="form-input" id="login-email" placeholder="you@example.com" value="user@shop.com"></div>
+          <div class="form-full" style="margin-bottom:6px"><label class="form-label">Password</label><input class="form-input" id="login-password" type="password" placeholder="Password" value="password123"></div>
+          <div style="text-align:right;margin-bottom:1rem"><a href="#" style="font-size:13px;color:var(--accent)">Forgot password?</a></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="login()"><i class="ti ti-login"></i> Sign In</button>
+        </div>
+        <div id="auth-form-register" style="display:none">
+          <div class="form-full"><label class="form-label">Full Name</label><input class="form-input" id="reg-name" placeholder="Your Name"></div>
+          <div class="form-full"><label class="form-label">Email</label><input class="form-input" id="reg-email" placeholder="you@example.com"></div>
+          <div class="form-full"><label class="form-label">Password</label><input class="form-input" id="reg-password" type="password" placeholder="Min. 8 characters"></div>
+          <div class="form-full"><label class="form-label">Confirm Password</label><input class="form-input" id="reg-confirm" type="password" placeholder="Repeat password"></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:4px" onclick="register()"><i class="ti ti-user-plus"></i> Create Account</button>
+        </div>
+        <div class="demo-accounts">
+          <div style="font-weight:600;font-size:12px;color:var(--text2);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">Demo Accounts</div>
+          <div class="demo-account">
+            <div><div class="demo-label">User</div><div class="demo-val">user@shop.com / password123</div></div>
+            <button class="quick-login" onclick="quickLogin('user')">Login</button>
+          </div>
+          <div class="demo-account">
+            <div><div class="demo-label">Admin</div><div class="demo-val">admin@shop.com / admin123</div></div>
+            <button class="quick-login" onclick="quickLogin('admin')">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN PAGE -->
+  <div class="page" id="page-admin">
+    <div class="admin-layout">
+      <div class="admin-sidebar">
+        <div style="padding:0 1.5rem 1.5rem;font-family:'Playfair Display',serif;font-size:1.1rem;color:white;border-bottom:1px solid rgba(255,255,255,0.1)">
+          ShopVault <span style="color:var(--accent)">Admin</span>
+        </div>
+        <div style="padding-top:1rem">
+          <div class="sidebar-section">
+            <div class="sidebar-label">Overview</div>
+            <div class="sidebar-item active" onclick="showAdminSection('dashboard',this)"><i class="ti ti-layout-dashboard"></i> Dashboard</div>
+          </div>
+          <div class="sidebar-section">
+            <div class="sidebar-label">Catalog</div>
+            <div class="sidebar-item" onclick="showAdminSection('products',this)"><i class="ti ti-box"></i> Products</div>
+            <div class="sidebar-item" onclick="showAdminSection('categories',this)"><i class="ti ti-category"></i> Categories</div>
+            <div class="sidebar-item" onclick="showAdminSection('inventory',this)"><i class="ti ti-stack"></i> Inventory</div>
+          </div>
+          <div class="sidebar-section">
+            <div class="sidebar-label">Commerce</div>
+            <div class="sidebar-item" onclick="showAdminSection('orders-admin',this)"><i class="ti ti-package"></i> Orders</div>
+            <div class="sidebar-item" onclick="showAdminSection('coupons',this)"><i class="ti ti-tag"></i> Coupons</div>
+          </div>
+          <div class="sidebar-section">
+            <div class="sidebar-label">People</div>
+            <div class="sidebar-item" onclick="showAdminSection('users',this)"><i class="ti ti-users"></i> Users</div>
+            <div class="sidebar-item" onclick="showAdminSection('reviews',this)"><i class="ti ti-star"></i> Reviews</div>
+          </div>
+          <div class="sidebar-section">
+            <div class="sidebar-label">System</div>
+            <div class="sidebar-item" onclick="showAdminSection('settings-admin',this)"><i class="ti ti-settings"></i> Settings</div>
+            <div class="sidebar-item" onclick="showAdminSection('api-docs',this)"><i class="ti ti-code"></i> API Docs</div>
+          </div>
+        </div>
+      </div>
+      <div class="admin-main">
+
+        <!-- DASHBOARD SECTION -->
+        <div class="admin-section active" id="as-dashboard">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div class="kpi-icon red"><i class="ti ti-currency-rupee"></i></div>
+                <span class="kpi-trend trend-up">+14.2%</span>
+              </div>
+              <div class="kpi-val">₹1,08,100</div>
+              <div class="kpi-label">Weekly Revenue</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div class="kpi-icon blue"><i class="ti ti-package"></i></div>
+                <span class="kpi-trend trend-up" id="admin-order-count">5</span>
+              </div>
+              <div class="kpi-val" style="font-size:1.8rem;font-weight:700;margin-top:10px">Active Orders</div>
+              <div class="kpi-label">Pending fulfillment</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div class="kpi-icon green"><i class="ti ti-users"></i></div>
+                <span class="kpi-trend trend-down" id="admin-user-count">4</span>
+              </div>
+              <div class="kpi-val" style="font-size:1.8rem;font-weight:700;margin-top:10px">Registered Users</div>
+              <div class="kpi-label">Platform members</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-top">
+                <div class="kpi-icon amber"><i class="ti ti-box"></i></div>
+                <span class="kpi-trend trend-up" id="admin-prod-count">16</span>
+              </div>
+              <div class="kpi-val" style="font-size:1.8rem;font-weight:700;margin-top:10px">Catalog Items</div>
+              <div class="kpi-label">Active products</div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:1.5rem">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem" class="chart-wrap">
+              <div style="font-weight:700;font-size:15px;margin-bottom:1rem">Revenue Performance</div>
+              <div class="chart-bar" id="rev-chart"></div>
+            </div>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+              <div style="font-weight:700;font-size:15px;margin-bottom:1rem">Recent Activity</div>
+              <div id="dash-orders"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCTS SECTION -->
+        <div class="admin-section" id="as-products">
+          <div class="section-header">
+            <div class="section-title">Product Catalog</div>
+            <button class="btn btn-primary btn-sm" onclick="openProductModal()"><i class="ti ti-plus"></i> Add Product</button>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="admin-products-table"></tbody>
+          </table>
+        </div>
+
+        <!-- CATEGORIES SECTION -->
+        <div class="admin-section" id="as-categories">
+          <div class="section-header">
+            <div class="section-title">Categories</div>
+            <button class="btn btn-primary btn-sm" onclick="toast('Add category modal')"><i class="ti ti-plus"></i> New Category</button>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-weight:600">Electronics</div><div style="font-size:12px;color:var(--text2)">5 Products</div></div>
+              <div style="font-size:1.8rem">📱</div>
+            </div>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-weight:600">Fashion</div><div style="font-size:12px;color:var(--text2)">3 Products</div></div>
+              <div style="font-size:1.8rem">👗</div>
+            </div>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-weight:600">Home</div><div style="font-size:12px;color:var(--text2)">2 Products</div></div>
+              <div style="font-size:1.8rem">🏠</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INVENTORY SECTION -->
+        <div class="admin-section" id="as-inventory">
+          <div class="section-title" style="margin-bottom:1.5rem">Inventory Tracking</div>
+          <table class="data-table">
+            <thead>
+              <tr><th>Product</th><th>SKU</th><th>Stock</th><th>Reserved</th><th>Available</th><th>Status</th></tr>
+            </thead>
+            <tbody id="inventory-table"></tbody>
+          </table>
+        </div>
+
+        <!-- ORDERS SECTION -->
+        <div class="admin-section" id="as-orders-admin">
+          <div class="section-header">
+            <div class="section-title">Order Dispatch Queue</div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-secondary btn-sm" onclick="filterOrders('All')">All</button>
+              <button class="btn btn-secondary btn-sm" onclick="filterOrders('Processing')">Processing</button>
+              <button class="btn btn-secondary btn-sm" onclick="filterOrders('Shipped')">Shipped</button>
+            </div>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="admin-orders-table"></tbody>
+          </table>
+        </div>
+
+        <!-- COUPONS SECTION -->
+        <div class="admin-section" id="as-coupons">
+          <div class="section-header">
+            <div class="section-title">Discount Coupons</div>
+            <button class="btn btn-primary btn-sm" onclick="toast('Create Coupon')"><i class="ti ti-plus"></i> Add Coupon</button>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr><th>Code</th><th>Discount Type</th><th>Value</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>SAVE10</code></td><td>Percentage</td><td>10%</td><td><span class="status-badge badge-success">Active</span></td><td>Disable</td></tr>
+              <tr><td><code>FLAT50</code></td><td>Fixed Amount</td><td>₹50</td><td><span class="status-badge badge-success">Active</span></td><td>Disable</td></tr>
+              <tr><td><code>NEWUSER</code></td><td>Percentage</td><td>15%</td><td><span class="status-badge badge-success">Active</span></td><td>Disable</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- USERS SECTION -->
+        <div class="admin-section" id="as-users">
+          <div class="section-title" style="margin-bottom:1.5rem">User Accounts</div>
+          <table class="data-table">
+            <thead>
+              <tr><th>Member</th><th>Email</th><th>Role</th><th>Orders</th><th>Joined</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="admin-users-table"></tbody>
+          </table>
+        </div>
+
+        <!-- REVIEWS SECTION -->
+        <div class="admin-section" id="as-reviews">
+          <div class="section-title" style="margin-bottom:1.5rem">Product Reviews</div>
+          <div id="admin-reviews"></div>
+        </div>
+
+        <!-- SETTINGS SECTION -->
+        <div class="admin-section" id="as-settings-admin">
+          <div class="section-title" style="margin-bottom:1.5rem">Store Configurations</div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;max-width:600px">
+            <div style="font-weight:600;margin-bottom:1rem;color:var(--text)">General</div>
+            <div class="form-group" style="margin-bottom:12px"><label class="form-label">Store Name</label><input class="form-input" value="ShopVault"></div>
+            <div class="form-group" style="margin-bottom:12px"><label class="form-label">Store Email</label><input class="form-input" value="support@shopvault.com"></div>
+            <div class="form-group" style="margin-bottom:1.5rem"><label class="form-label">Currency</label>
+              <select class="form-input"><option>INR (₹)</option><option>USD ($)</option><option>EUR (€)</option></select>
+            </div>
+            <div style="font-weight:600;margin-bottom:1rem;color:var(--text)">Notifications</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+              <div><div style="font-size:14px;font-weight:500">Order Emails</div><div style="font-size:12px;color:var(--text2)">Send email on new order</div></div>
+              <label class="toggle"><input type="checkbox" checked><div class="toggle-slider"></div></label>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+              <div><div style="font-size:14px;font-weight:500">Low Stock Alerts</div><div style="font-size:12px;color:var(--text2)">Alert when stock falls below 10</div></div>
+              <label class="toggle"><input type="checkbox" checked><div class="toggle-slider"></div></label>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
+              <div><div style="font-size:14px;font-weight:500">Maintenance Mode</div><div style="font-size:12px;color:var(--text2)">Take store offline</div></div>
+              <label class="toggle"><input type="checkbox"><div class="toggle-slider"></div></label>
+            </div>
+            <button class="btn btn-primary" style="margin-top:1.5rem" onclick="toast('Settings saved!','success')"><i class="ti ti-check"></i> Save Changes</button>
+          </div>
+        </div>
+
+        <!-- API DOCS -->
+        <div class="admin-section" id="as-api-docs">
+          <div class="section-title" style="margin-bottom:1.5rem"><i class="ti ti-code"></i> API Documentation</div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+            <div style="font-size:14px;color:var(--text2);margin-bottom:1.5rem">Base URL: <code style="background:var(--surface3);padding:4px 10px;border-radius:6px;font-size:13px">/api</code></div>
+            <div id="api-endpoints"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE PAGE -->
+  <div class="page" id="page-profile">
+    <div class="container">
+      <div class="profile-header">
+        <div class="avatar-lg" id="profile-avatar">U</div>
+        <div>
+          <div class="profile-name" id="profile-name">User</div>
+          <div class="profile-email" id="profile-email"></div>
+          <div style="margin-top:8px"><span class="role-badge" id="profile-role-badge" style="font-size:11px;padding:4px 10px"></span></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+          <div style="font-weight:700;font-size:15px;margin-bottom:1.2rem">Personal Info</div>
+          <div class="form-group" style="margin-bottom:12px"><label class="form-label">Full Name</label><input class="form-input" id="profile-name-input"></div>
+          <div class="form-group" style="margin-bottom:12px"><label class="form-label">Email</label><input class="form-input" id="profile-email-input"></div>
+          <div class="form-group" style="margin-bottom:12px"><label class="form-label">Phone</label><input class="form-input" value="+91 98765 43210"></div>
+          <button class="btn btn-primary btn-sm" onclick="saveProfileChanges()"><i class="ti ti-check"></i> Save Changes</button>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
+          <div style="font-weight:700;font-size:15px;margin-bottom:1.2rem">Account Stats</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:var(--surface3);border-radius:var(--radius);padding:1rem;text-align:center">
+              <div style="font-size:1.5rem;font-weight:700;color:var(--accent)" id="stat-orders">0</div>
+              <div style="font-size:12px;color:var(--text2)">Orders</div>
+            </div>
+            <div style="background:var(--surface3);border-radius:var(--radius);padding:1rem;text-align:center">
+              <div style="font-size:1.5rem;font-weight:700;color:var(--accent)" id="stat-wishlist">0</div>
+              <div style="font-size:12px;color:var(--text2)">Wishlist</div>
+            </div>
+            <div style="background:var(--surface3);border-radius:var(--radius);padding:1rem;text-align:center">
+              <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">4.8★</div>
+              <div style="font-size:12px;color:var(--text2)">Avg. Rating</div>
+            </div>
+            <div style="background:var(--surface3);border-radius:var(--radius);padding:1rem;text-align:center">
+              <div style="font-size:1.5rem;font-weight:700;color:var(--accent)">Gold</div>
+              <div style="font-size:12px;color:var(--text2)">Member Tier</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title">Add Product</div>
+        <button class="modal-close" onclick="closeModal('product-modal')"><i class="ti ti-x"></i></button>
+      </div>
+      <div class="form-group" style="margin-bottom:12px"><label class="form-label">Product Name</label><input class="form-input" id="pm-name" placeholder="e.g. Wireless Headphones"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Category</label>
+          <select class="form-input" id="pm-category">
+            <option>Electronics</option><option>Fashion</option><option>Home</option><option>Sports</option><option>Books</option><option>Beauty</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Price (₹)</label><input class="form-input" id="pm-price" type="number" placeholder="999"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Stock Qty</label><input class="form-input" id="pm-stock" type="number" placeholder="100"></div>
+        <div class="form-group"><label class="form-label">Emoji Icon</label><input class="form-input" id="pm-emoji" placeholder="📱"></div>
+      </div>
+      <div class="form-group" style="margin-bottom:12px"><label class="form-label">Description</label>
+        <textarea class="form-input" id="pm-desc" rows="3" style="resize:vertical" placeholder="Product description..."></textarea>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem">
+        <button class="btn btn-secondary" onclick="closeModal('product-modal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveProduct()"><i class="ti ti-check"></i> Save Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal" style="max-width:560px">
+      <div class="modal-header">
+        <div class="modal-title" id="dm-title">Product Details</div>
+        <button class="modal-close" onclick="closeModal('detail-modal')"><i class="ti ti-x"></i></button>
+      </div>
+      <div style="text-align:center;font-size:5rem;background:var(--surface3);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem" id="dm-emoji"></div>
+      <div id="dm-category" style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:4px"></div>
+      <div id="dm-name" style="font-size:1.25rem;font-weight:700;margin-bottom:6px"></div>
+      <div id="dm-stars" style="color:#f59e0b;margin-bottom:8px"></div>
+      <div id="dm-desc" style="font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:1rem"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+        <div id="dm-price" style="font-size:1.5rem;font-weight:700;color:var(--text)"></div>
+        <div id="dm-stock-badge"></div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-primary" style="flex:1;justify-content:center" id="dm-cart-btn" onclick=""></button>
+        <button class="btn btn-secondary" id="dm-wish-btn" onclick=""></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER DETAIL MODAL -->
+  <div class="modal-overlay" id="order-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="om-id">Order Details</div>
+        <button class="modal-close" onclick="closeModal('order-modal')"><i class="ti ti-x"></i></button>
+      </div>
+      <div id="om-content"></div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
